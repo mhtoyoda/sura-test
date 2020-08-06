@@ -22,7 +22,7 @@ CREATE TABLE clientes (
     idCliente integer NOT NULL,
     nome character varying(100) NOT NULL,
     email character varying(100) NOT NULL,
-    senha character varying(16) NOT NULL,
+    senha character varying(300) NOT NULL,
     rua character varying(100) NOT NULL,
     cidade character varying(60) NOT NULL,
     cep character varying(8) NOT NULL,
