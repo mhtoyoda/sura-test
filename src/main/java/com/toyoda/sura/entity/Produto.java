@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class Produto {
 
     @Id
-    @Column(name = "idProduto")
+    @Column(name = "idproduto")
     @SequenceGenerator(name = "produtosSeq", sequenceName = "produtos_seq", allocationSize = 1, initialValue = 1)
     @GeneratedValue(generator = "produtosSeq", strategy = GenerationType.SEQUENCE)
     @EqualsAndHashCode.Include
@@ -28,6 +28,6 @@ public class Produto {
     private Double preco;
 
     @ManyToOne
-    @JoinColumn(name = "idCategoria")
+    @JoinColumn(name = "idcategoria")
     private Categoria categoria;
 }

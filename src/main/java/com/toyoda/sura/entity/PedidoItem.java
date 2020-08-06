@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class PedidoItem {
 
     @Id
-    @Column(name = "idItem")
+    @Column(name = "iditem")
     @SequenceGenerator(name = "pedidoItensSeq", sequenceName = "pedidoItens_seq", allocationSize = 1, initialValue = 1)
     @GeneratedValue(generator = "pedidoItensSeq", strategy = GenerationType.SEQUENCE)
     @EqualsAndHashCode.Include
@@ -30,10 +30,10 @@ public class PedidoItem {
     private Double subtotal;
 
     @ManyToOne
-    @JoinColumn(name = "idPedido")
+    @JoinColumn(name = "idpedido")
     private Pedido pedido;
 
     @ManyToOne
-    @JoinColumn(name = "idProduto")
+    @JoinColumn(name = "idproduto")
     private Produto produto;
 }

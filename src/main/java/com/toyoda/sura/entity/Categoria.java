@@ -18,7 +18,7 @@ import javax.persistence.Table;
 public class Categoria {
 
     @Id
-    @Column(name = "idCategoria")
+    @Column(name = "idcategoria")
     @EqualsAndHashCode.Include
     private Long id;
 

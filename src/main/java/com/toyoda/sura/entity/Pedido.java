@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 public class Pedido {
 
     @Id
-    @Column(name = "idPedido")
+    @Column(name = "idpedido")
     @SequenceGenerator(name = "pedidoSeq", sequenceName = "pedido_seq", allocationSize = 1, initialValue = 1)
     @GeneratedValue(generator = "pedidoSeq", strategy = GenerationType.SEQUENCE)
     @EqualsAndHashCode.Include
@@ -30,6 +30,6 @@ public class Pedido {
     private String status;
 
     @ManyToOne
-    @JoinColumn(name = "idCliente")
+    @JoinColumn(name = "idcliente")
     private Cliente cliente;
 }

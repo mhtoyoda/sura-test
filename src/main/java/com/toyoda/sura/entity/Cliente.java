@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class Cliente {
 
     @Id
-    @Column(name = "idCliente")
+    @Column(name = "idcliente")
     @SequenceGenerator(name = "clienteSeq", sequenceName = "cliente_seq", allocationSize = 1, initialValue = 1)
     @GeneratedValue(generator = "clienteSeq", strategy = GenerationType.SEQUENCE)
     @EqualsAndHashCode.Include
