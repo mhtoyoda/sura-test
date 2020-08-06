@@ -5,7 +5,10 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "categorias")
@@ -16,8 +19,6 @@ public class Categoria {
 
     @Id
     @Column(name = "idCategoria")
-    @SequenceGenerator(name = "categoriasSeq", sequenceName = "categorias_seq", allocationSize = 1, initialValue = 1)
-    @GeneratedValue(generator = "categoriasSeq", strategy = GenerationType.SEQUENCE)
     @EqualsAndHashCode.Include
     private Long id;
 
