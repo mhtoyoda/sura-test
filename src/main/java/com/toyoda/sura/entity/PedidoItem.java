@@ -1,4 +1,4 @@
-package com.toyoda.sura.com.toyoda.sura.entity;
+package com.toyoda.sura.entity;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
