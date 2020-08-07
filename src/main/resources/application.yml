@@ -14,5 +14,7 @@ spring:
             database-platform: org.hibernate.dialect.PostgreSQLDialect
             hibernate:
                 ddl-auto: none
+                naming:
+                    physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     flyway:
         baselineOnMigrate: true
