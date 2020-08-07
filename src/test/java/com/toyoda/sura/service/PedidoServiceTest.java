@@ -5,6 +5,7 @@ import com.toyoda.sura.dto.PedidoResponseDTO;
 import com.toyoda.sura.entity.Cliente;
 import com.toyoda.sura.entity.Pedido;
 import com.toyoda.sura.entity.Produto;
+import com.toyoda.sura.exception.PedidoErrorException;
 import com.toyoda.sura.exception.ResourceNotFoundException;
 import com.toyoda.sura.repository.ClienteRepository;
 import com.toyoda.sura.repository.PedidoItemRepository;
@@ -17,7 +18,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureWebMvc;
 
 import java.util.Arrays;
 import java.util.Optional;
@@ -25,7 +25,6 @@ import java.util.Optional;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-@AutoConfigureWebMvc
 public class PedidoServiceTest {
 
     @Mock
@@ -74,12 +73,20 @@ public class PedidoServiceTest {
     @Test
     public void createPedidoClienteNotFoundTest() {
         String emailUser = "user@test.com";
+        Long produtoId = 1L;
+        PedidoRequestDTO item1 = new PedidoRequestDTO(produtoId, 1);
 
         when(clienteRepository.findByEmail(emailUser)).thenReturn(null);
-        PedidoResponseDTO pedidoResponseDTO = pedidoService.createPedido(emailUser, Arrays.asList());
+        PedidoResponseDTO pedidoResponseDTO = pedidoService.createPedido(emailUser, Arrays.asList(item1));
 
         Assertions.assertEquals(pedidoResponseDTO.getId(), 0L);
         Assertions.assertEquals(pedidoResponseDTO.getStatus(), "Error");
+    }
+
+    @Test
+    public void createListaPedidoVaziaTest() {
+        String emailUser = "user@test.com";
+        Assertions.assertThrows(PedidoErrorException.class, () -> pedidoService.createPedido(emailUser, Arrays.asList()));
     }
 
     @Test

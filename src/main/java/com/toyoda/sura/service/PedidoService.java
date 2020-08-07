@@ -6,6 +6,7 @@ import com.toyoda.sura.entity.Cliente;
 import com.toyoda.sura.entity.Pedido;
 import com.toyoda.sura.entity.PedidoItem;
 import com.toyoda.sura.entity.Produto;
+import com.toyoda.sura.exception.PedidoErrorException;
 import com.toyoda.sura.exception.ResourceNotFoundException;
 import com.toyoda.sura.repository.ClienteRepository;
 import com.toyoda.sura.repository.PedidoItemRepository;
@@ -14,6 +15,7 @@ import com.toyoda.sura.repository.ProdutoRepository;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -44,6 +46,11 @@ public class PedidoService {
 
     @Transactional
     public PedidoResponseDTO createPedido(String emailUser, List<PedidoRequestDTO> pedidoList) {
+
+        if(CollectionUtils.isEmpty(pedidoList)) {
+            throw new PedidoErrorException("Lista de Pedidos vazia");
+        }
+
         Cliente cliente = clienteRepository.findByEmail(emailUser);
 
         if(cliente != null) {
