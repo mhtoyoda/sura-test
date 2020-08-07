@@ -67,7 +67,7 @@ CREATE TABLE pedidos (
     CONSTRAINT idCliente_fkey FOREIGN KEY (idCliente) REFERENCES clientes(idCliente)
 );
 
-CREATE SEQUENCE pedidoItens_seq
+CREATE SEQUENCE pedido_itens_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE

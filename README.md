@@ -4,6 +4,7 @@ Api de Teste Sura
 
 ## Executar o comando no Terminal:
  ```
+ mvn clean package
  docker-compose up
  ```
  
@@ -31,20 +32,24 @@ http://localhost:8080/api/login
 http://localhost:8080/api/
 ```
 
-
 ### SWAGGER URL
 ```
 http://localhost:8080/swagger-ui.html
 ```
 
-## Versioning
+### Postman
+```
+https://www.getpostman.com/collections/778921b0d7b0c71499a6`
+```
+ 
+### Versioning
 
 1.0.0
 
-## Authors
+### Authors
 
 * **Marcelo Toyoda** - *Initial work*
 
-## License
+### License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

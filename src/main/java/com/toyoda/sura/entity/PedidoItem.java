@@ -8,7 +8,7 @@ import lombok.ToString;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "pedidoItens")
+@Table(name = "pedidoitens")
 @Setter
 @Getter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -17,7 +17,7 @@ public class PedidoItem {
 
     @Id
     @Column(name = "iditem")
-    @SequenceGenerator(name = "pedidoItensSeq", sequenceName = "pedidoItens_seq", allocationSize = 1, initialValue = 1)
+    @SequenceGenerator(name = "pedidoItensSeq", sequenceName = "pedido_itens_seq", allocationSize = 1, initialValue = 1)
     @GeneratedValue(generator = "pedidoItensSeq", strategy = GenerationType.SEQUENCE)
     @EqualsAndHashCode.Include
     private Long id;
