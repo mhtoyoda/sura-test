@@ -12,8 +12,6 @@ import com.toyoda.sura.repository.PedidoItemRepository;
 import com.toyoda.sura.repository.PedidoRepository;
 import com.toyoda.sura.repository.ProdutoRepository;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,14 +43,12 @@ public class PedidoService {
     }
 
     @Transactional
-    public PedidoResponseDTO createPedido(List<PedidoRequestDTO> pedidoList) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    public PedidoResponseDTO createPedido(String emailUser, List<PedidoRequestDTO> pedidoList) {
+        Cliente cliente = clienteRepository.findByEmail(emailUser);
 
-        if(authentication.getPrincipal() != null) {
-            Cliente cliente = clienteRepository.findByEmail(authentication.getPrincipal().toString());
+        if(cliente != null) {
             Pedido pedido = new Pedido();
             pedido.setSessao(RandomStringUtils.randomAlphabetic(5));
-            pedido.setStatus("Andamento");
             pedido.setCliente(cliente);
             Pedido pedidoSalvo = pedidoRepository.save(pedido);
 

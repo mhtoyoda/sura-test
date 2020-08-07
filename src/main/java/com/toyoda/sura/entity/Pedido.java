@@ -27,7 +27,7 @@ public class Pedido {
     @Column(name = "data", columnDefinition = "TIMESTAMP")
     private LocalDateTime data = LocalDateTime.now();
 
-    private String status;
+    private String status = "Andamento";
 
     @ManyToOne
     @JoinColumn(name = "idcliente")
